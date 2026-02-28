@@ -79,9 +79,9 @@ class TestFormLabels:
             print(f"\n[FORM] Unlabeled text inputs: {unlabeled}")
             # This is an expected failure (phone field has no label)
         
-        # We expect the phone field to be unlabeled (intentional issue)
-        assert len(unlabeled) <= 1, (
-            f"Too many unlabeled inputs: {unlabeled}"
+        # All inputs must have labels
+        assert len(unlabeled) == 0, (
+            f"Unlabeled inputs found: {unlabeled}"
         )
 
     def test_select_has_label(self, form_page):

@@ -99,6 +99,16 @@ class TestDashboardTables:
 class TestDashboardARIA:
     """Test ARIA attributes and live regions."""
 
+    def test_no_empty_links(self, dashboard_page):
+        """All links must have discernible text."""
+        results = run_axe(dashboard_page)
+        link_violations = [v for v in get_violations(results) if v.get('id') == 'link-name']
+        
+        assert len(link_violations) == 0, (
+            f"Found empty link(s) without accessible text:\n"
+            f"{format_violations(link_violations)}"
+        )
+
     def test_alert_roles(self, dashboard_page):
         """Alert elements should have role='alert'."""
         alerts = dashboard_page.find_elements("css selector", ".alert")
