@@ -72,7 +72,7 @@
                         <span class="error-msg" id="email-error" role="alert">Please enter a valid email address.</span>
                     </div>
 
-                    <!-- BAD: Input without a visible label (accessibility issue) -->
+                    <!-- DEMO BUG #2: Input without label (fix: add <label for="phone">Phone Number</label>) -->
                     <div class="form-group">
                         <input type="tel" id="phone" name="phone" placeholder="Phone Number" autocomplete="tel">
                     </div>
@@ -127,16 +127,18 @@
                         </label>
                     </div>
 
-                    <!-- BAD: Checkbox without associated label -->
+                    <!-- GOOD: Checkbox with associated label -->
                     <div class="form-group">
-                        <input type="checkbox" name="terms" id="terms-cb">
-                        <span class="tiny-text low-contrast-text">I agree to the terms and conditions</span>
+                        <label style="font-weight:normal; display:flex; align-items:center; gap:8px;">
+                            <input type="checkbox" name="terms" id="terms-cb" required>
+                            I agree to the terms and conditions
+                        </label>
                     </div>
                 </fieldset>
 
-                <!-- BAD: tabindex > 0 disrupts natural tab order -->
+                <!-- GOOD: Natural tab order -->
                 <div style="display:flex; gap:12px; margin-top:24px;">
-                    <button type="submit" class="btn btn-primary" tabindex="5">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-secondary">Clear Form</button>
                 </div>
 
@@ -145,11 +147,11 @@
             </form>
         </div>
 
-        <!-- BAD: Section with heading level skip (h2 -> h4) -->
+        <!-- GOOD: Proper heading level -->
         <div class="card mt-4">
-            <h4>Other Ways to Reach Us</h4>
+            <h2>Other Ways to Reach Us</h2>
             <p>Email: <a href="mailto:support@aegis-testing.dev">support@aegis-testing.dev</a></p>
-            <p class="low-contrast-text tiny-text">Response time: 24-48 hours</p>
+            <p><small>Response time: 24-48 hours</small></p>
         </div>
     </main>
 

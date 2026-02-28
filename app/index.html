@@ -83,40 +83,38 @@
         <!-- Section with INTENTIONAL accessibility issues for testing -->
         <h2 class="section-title" id="demo-heading">Accessibility Demo Section</h2>
 
-        <!-- BAD: Image without alt text -->
+        <!-- DEMO BUG #1: Image without alt text (fix: add alt="Sample Image") -->
         <div class="card mb-4">
             <h3>Image Accessibility</h3>
             <p>The image below is intentionally missing its alt attribute:</p>
             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120' fill='%23e0e0e0'%3E%3Crect width='400' height='120'/%3E%3Ctext x='200' y='65' text-anchor='middle' fill='%23999' font-size='16'%3ESample Image%3C/text%3E%3C/svg%3E" width="400" height="120">
         </div>
 
-        <!-- BAD: Low contrast text -->
+        <!-- GOOD: Proper contrast text -->
         <div class="card mb-4">
-            <h3>Color Contrast Issue</h3>
-            <p class="low-contrast-text">This text has very low contrast against the white background, making it difficult to read for users with visual impairments.</p>
+            <h3>Color Contrast</h3>
+            <p>This text has proper contrast against the background, making it easy to read for all users.</p>
         </div>
 
-        <!-- BAD: Link with no discernible text -->
+        <!-- GOOD: Accessible links -->
         <div class="card mb-4">
-            <h3>Link Issues</h3>
-            <p>Below are links with accessibility problems:</p>
-            <a href="#" class="btn btn-primary"></a>
-            <a href="#">Click here</a> to learn more about our services.
+            <h3>Learn More</h3>
+            <p><a href="#demo-heading">Learn about accessibility testing</a> and how it helps improve your web applications.</p>
         </div>
 
-        <!-- BAD: div used as button without proper role -->
+        <!-- GOOD: Proper button -->
         <div class="card mb-4">
-            <h3>Interactive Element Issues</h3>
-            <p>The element below looks like a button but is not accessible:</p>
-            <div class="btn btn-primary btn-no-focus" onclick="alert('clicked')" style="display:inline-block; margin-top:8px;">
-                Fake Button
-            </div>
+            <h3>Interactive Elements</h3>
+            <p>Click the button below to see an alert:</p>
+            <button class="btn btn-primary" onclick="alert('Button clicked!')" style="margin-top:8px;">
+                Click Me
+            </button>
         </div>
 
-        <!-- BAD: Auto-playing content announcement without aria-live -->
+        <!-- GOOD: Dynamic content with aria-live -->
         <div class="card mb-4">
             <h3>Dynamic Content</h3>
-            <div id="live-ticker">
+            <div id="live-ticker" aria-live="polite" aria-atomic="true">
                 <p>Live updates will appear here...</p>
             </div>
             <button class="btn btn-primary mt-4" onclick="startTicker()">Start Updates</button>

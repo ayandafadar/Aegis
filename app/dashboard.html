@@ -122,15 +122,18 @@
             </tbody>
         </table>
 
-        <!-- BAD: Table without proper headers (intentional a11y issue) -->
+        <!-- GOOD: Table with proper headers -->
         <h2 class="section-title" id="metrics-heading">Performance Metrics</h2>
         <table class="data-table" aria-labelledby="metrics-heading">
-            <tr>
-                <td><strong>Metric</strong></td>
-                <td><strong>Value</strong></td>
-                <td><strong>Target</strong></td>
-                <td><strong>Trend</strong></td>
-            </tr>
+            <thead>
+                <tr>
+                    <th scope="col">Metric</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Target</th>
+                    <th scope="col">Trend</th>
+                </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>Scan Duration</td>
                 <td>2.4s</td>
@@ -149,13 +152,14 @@
                 <td>&gt; 90%</td>
                 <td>&#8593; Needs Work</td>
             </tr>
+            </tbody>
         </table>
 
         <!-- Chart placeholder -->
         <h2 class="section-title">Trend Analysis</h2>
-        <!-- BAD: Chart with no text alternative -->
-        <div class="chart-placeholder" role="img">
-            [Chart: Issues Over Time - Missing accessible description]
+        <!-- GOOD: Chart with proper alt text -->
+        <div class="chart-placeholder" role="img" aria-label="Line chart showing accessibility issues decreasing from 45 to 12 over the past 6 months">
+            [Chart: Issues Over Time - Decreasing trend]
         </div>
 
         <!-- GOOD: Live region for dynamic updates -->
@@ -163,14 +167,13 @@
             Dashboard loaded successfully.
         </div>
 
-        <!-- BAD: Inline event handler on non-interactive element -->
+        <!-- GOOD: Proper accessible buttons -->
         <div class="card mt-4">
             <h2>Quick Actions</h2>
             <div style="display:flex; gap:12px; margin-top:16px; flex-wrap:wrap;">
                 <button class="btn btn-primary" onclick="runScan()">Run New Scan</button>
                 <button class="btn btn-secondary" onclick="exportReport()">Export Report</button>
-                <!-- BAD: span acting as button -->
-                <span class="btn btn-danger" onclick="clearData()" style="cursor:pointer;">Clear All Data</span>
+                <button class="btn btn-danger" onclick="clearData()">Clear All Data</button>
             </div>
         </div>
     </main>
