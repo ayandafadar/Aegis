@@ -1,0 +1,15 @@
+{
+  "name": "aegis",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "npm --prefix apps/api run start",
+    "worker": "npm --prefix apps/worker run start"
+  },
+  "devDependencies": {
+    "@ljharb/tsconfig": "^0.3.2"
+  }
+}

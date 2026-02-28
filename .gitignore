@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Generated reports
 reports/
 
@@ -23,3 +24,29 @@ Thumbs.db
 
 # Build
 .dist/
+=======
+# dependencies
+node_modules/
+
+# build outputs
+dist/
+build/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+.DS_Store
+Thumbs.db
+
+# coverage
+coverage/
+
+# local env files
+.env
+.env.*
+
+storage/*.json
+>>>>>>> e3a162bceb62a158f3e0fad3f6087d71a0d1f8e0
