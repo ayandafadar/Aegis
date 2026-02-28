@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Aegis</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header role="banner">
+        <div class="header-inner">
+            <div class="header-left">
+                <a href="index.html" class="logo" aria-label="Aegis Home">
+                    <svg viewBox="0 0 32 32" aria-hidden="true" fill="currentColor">
+                        <path d="M16 2L3 28h26L16 2zm0 6l9.5 18H6.5L16 8z"/>
+                        <circle cx="16" cy="22" r="2"/>
+                        <rect x="15" y="14" width="2" height="6"/>
+                    </svg>
+                    Aegis
+                </a>
+                <nav aria-label="Main navigation">
+                    <ul role="list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+                        <li><a href="form.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <svg class="theme-toggle-icon theme-toggle-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="theme-toggle-icon theme-toggle-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <span class="sr-only">Toggle theme</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <h1 class="section-title">Accessibility Dashboard</h1>
+
+        <!-- GOOD: Alert with proper role -->
+        <div class="alert alert-info" role="alert">
+            <span aria-hidden="true">&#9432;</span>
+            <span>Last scan completed 2 minutes ago. 3 new issues detected.</span>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="card-grid">
+            <div class="card" role="region" aria-label="Total scans summary">
+                <h2>Total Scans</h2>
+                <p style="font-size: 2.5rem; font-weight: 700; color: var(--primary);">142</p>
+                <p>Pages analyzed this month</p>
+            </div>
+            <div class="card" role="region" aria-label="Issues found summary">
+                <h2>Issues Found</h2>
+                <p style="font-size: 2.5rem; font-weight: 700; color: var(--danger);">37</p>
+                <p>Accessibility violations detected</p>
+            </div>
+            <div class="card" role="region" aria-label="Compliance rate summary">
+                <h2>Compliance</h2>
+                <p style="font-size: 2.5rem; font-weight: 700; color: var(--success);">94.2%</p>
+                <p>WCAG 2.1 AA compliance rate</p>
+            </div>
+        </div>
+
+        <!-- GOOD: Data table with proper structure -->
+        <h2 class="section-title" id="issues-heading">Recent Issues</h2>
+        <table class="data-table" aria-labelledby="issues-heading">
+            <thead>
+                <tr>
+                    <th scope="col">Issue</th>
+                    <th scope="col">Page</th>
+                    <th scope="col">WCAG Rule</th>
+                    <th scope="col">Impact</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Missing alt text on hero image</td>
+                    <td>/index.html</td>
+                    <td>1.1.1 Non-text Content</td>
+                    <td><span class="badge badge-fail">Critical</span></td>
+                    <td><span class="badge badge-fail">Open</span></td>
+                </tr>
+                <tr>
+                    <td>Insufficient color contrast on subtitle</td>
+                    <td>/index.html</td>
+                    <td>1.4.3 Contrast (Minimum)</td>
+                    <td><span class="badge badge-warn">Serious</span></td>
+                    <td><span class="badge badge-fail">Open</span></td>
+                </tr>
+                <tr>
+                    <td>Form input missing label</td>
+                    <td>/form.html</td>
+                    <td>1.3.1 Info and Relationships</td>
+                    <td><span class="badge badge-fail">Critical</span></td>
+                    <td><span class="badge badge-pass">Fixed</span></td>
+                </tr>
+                <tr>
+                    <td>Empty link text</td>
+                    <td>/index.html</td>
+                    <td>2.4.4 Link Purpose</td>
+                    <td><span class="badge badge-warn">Serious</span></td>
+                    <td><span class="badge badge-fail">Open</span></td>
+                </tr>
+                <tr>
+                    <td>Missing document language</td>
+                    <td>/legacy.html</td>
+                    <td>3.1.1 Language of Page</td>
+                    <td><span class="badge badge-warn">Serious</span></td>
+                    <td><span class="badge badge-pass">Fixed</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- BAD: Table without proper headers (intentional a11y issue) -->
+        <h2 class="section-title" id="metrics-heading">Performance Metrics</h2>
+        <table class="data-table" aria-labelledby="metrics-heading">
+            <tr>
+                <td><strong>Metric</strong></td>
+                <td><strong>Value</strong></td>
+                <td><strong>Target</strong></td>
+                <td><strong>Trend</strong></td>
+            </tr>
+            <tr>
+                <td>Scan Duration</td>
+                <td>2.4s</td>
+                <td>&lt; 5s</td>
+                <td>&#8595; Improving</td>
+            </tr>
+            <tr>
+                <td>Issues/Page</td>
+                <td>0.26</td>
+                <td>&lt; 0.5</td>
+                <td>&#8595; Improving</td>
+            </tr>
+            <tr>
+                <td>Fix Rate</td>
+                <td>78%</td>
+                <td>&gt; 90%</td>
+                <td>&#8593; Needs Work</td>
+            </tr>
+        </table>
+
+        <!-- Chart placeholder -->
+        <h2 class="section-title">Trend Analysis</h2>
+        <!-- BAD: Chart with no text alternative -->
+        <div class="chart-placeholder" role="img">
+            [Chart: Issues Over Time - Missing accessible description]
+        </div>
+
+        <!-- GOOD: Live region for dynamic updates -->
+        <div aria-live="polite" aria-atomic="true" id="dashboard-status" class="sr-only">
+            Dashboard loaded successfully.
+        </div>
+
+        <!-- BAD: Inline event handler on non-interactive element -->
+        <div class="card mt-4">
+            <h2>Quick Actions</h2>
+            <div style="display:flex; gap:12px; margin-top:16px; flex-wrap:wrap;">
+                <button class="btn btn-primary" onclick="runScan()">Run New Scan</button>
+                <button class="btn btn-secondary" onclick="exportReport()">Export Report</button>
+                <!-- BAD: span acting as button -->
+                <span class="btn btn-danger" onclick="clearData()" style="cursor:pointer;">Clear All Data</span>
+            </div>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 Aegis Accessibility Testing Platform.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

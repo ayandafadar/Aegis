@@ -1,0 +1,25 @@
+# Generated reports
+reports/
+
+# axe-core cache
+.axe-cache/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build
+.dist/
