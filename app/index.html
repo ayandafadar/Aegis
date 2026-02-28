@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- GOOD: Skip navigation link -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <!-- GOOD: Proper header landmark -->
     <header role="banner">
         <div class="header-inner">
             <div class="header-left">
@@ -22,7 +20,6 @@
                     </svg>
                     Aegis
                 </a>
-                <!-- GOOD: Proper nav landmark with aria-label -->
                 <nav aria-label="Main navigation">
                     <ul role="list">
                         <li><a href="index.html" aria-current="page">Home</a></li>
@@ -37,116 +34,38 @@
                         <circle cx="12" cy="12" r="5"/>
                         <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                     </svg>
-                    <svg class="theme-toggle-icon theme-toggle-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                    </svg>
                     <span class="sr-only">Toggle theme</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- GOOD: Main landmark with id for skip link -->
     <main id="main-content" role="main">
-        <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-title">
             <h1 id="hero-title">Accessibility Testing Platform</h1>
-            <p>Aegis helps teams build inclusive web experiences by catching accessibility issues early in the development cycle.</p>
+            <p>Aegis helps teams build inclusive web experiences by catching accessibility issues early.</p>
             <a href="dashboard.html" class="btn btn-primary">View Dashboard</a>
         </section>
 
-        <!-- Feature Cards -->
-        <h2 class="section-title" id="features-heading">Key Features</h2>
-        <div class="card-grid" aria-labelledby="features-heading">
-            <!-- GOOD: Card with proper heading hierarchy -->
-            <div class="card">
-                <h3>Automated Scanning</h3>
-                <p>Run axe-core powered scans against any page to detect WCAG violations automatically.</p>
-                <a href="dashboard.html" class="btn btn-primary">Learn More</a>
-            </div>
+        <h2 class="section-title">Demo Section</h2>
 
-            <!-- GOOD: Card with proper structure -->
-            <div class="card">
-                <h3>Keyboard Testing</h3>
-                <p>Verify that all interactive elements are reachable and operable via keyboard alone.</p>
-                <a href="dashboard.html" class="btn btn-primary">Learn More</a>
-            </div>
-
-            <!-- GOOD: Card with proper structure -->
-            <div class="card">
-                <h3>Color Contrast</h3>
-                <p>Check that text and interactive elements meet WCAG AA contrast ratio requirements.</p>
-                <a href="dashboard.html" class="btn btn-primary">Learn More</a>
-            </div>
-        </div>
-
-        <!-- Section with INTENTIONAL accessibility issues for testing -->
-        <h2 class="section-title" id="demo-heading">Accessibility Demo Section</h2>
-
-        <!-- DEMO BUG #1: Image without alt text (fix: add alt="Sample Image") -->
+        <!-- DEMO BUG #1: Image without alt text (fix: add alt="Placeholder image") -->
         <div class="card mb-4">
-            <h3>Image Accessibility</h3>
-            <p>The image below is intentionally missing its alt attribute:</p>
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='120' fill='%23e0e0e0'%3E%3Crect width='400' height='120'/%3E%3Ctext x='200' y='65' text-anchor='middle' fill='%23999' font-size='16'%3ESample Image%3C/text%3E%3C/svg%3E" width="400" height="120">
+            <h3>Image Test</h3>
+            <p>This image is missing its alt attribute:</p>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='100' fill='%23ddd'%3E%3Crect width='300' height='100'/%3E%3Ctext x='150' y='55' text-anchor='middle' fill='%23666'%3EPlaceholder%3C/text%3E%3C/svg%3E" width="300" height="100">
         </div>
 
-        <!-- GOOD: Proper contrast text -->
         <div class="card mb-4">
-            <h3>Color Contrast</h3>
-            <p>This text has proper contrast against the background, making it easy to read for all users.</p>
+            <h3>About</h3>
+            <p>This is a demo application for testing accessibility scanning with axe-core and Selenium.</p>
+            <a href="form.html" class="btn btn-primary">Contact Us</a>
         </div>
-
-        <!-- GOOD: Accessible links -->
-        <div class="card mb-4">
-            <h3>Learn More</h3>
-            <p><a href="#demo-heading">Learn about accessibility testing</a> and how it helps improve your web applications.</p>
-        </div>
-
-        <!-- GOOD: Proper button -->
-        <div class="card mb-4">
-            <h3>Interactive Elements</h3>
-            <p>Click the button below to see an alert:</p>
-            <button class="btn btn-primary" onclick="alert('Button clicked!')" style="margin-top:8px;">
-                Click Me
-            </button>
-        </div>
-
-        <!-- GOOD: Dynamic content with aria-live -->
-        <div class="card mb-4">
-            <h3>Dynamic Content</h3>
-            <div id="live-ticker" aria-live="polite" aria-atomic="true">
-                <p>Live updates will appear here...</p>
-            </div>
-            <button class="btn btn-primary mt-4" onclick="startTicker()">Start Updates</button>
-        </div>
-
-        <!-- GOOD: Proper accessible section -->
-        <section class="card mb-4" aria-labelledby="stats-heading">
-            <h3 id="stats-heading">Platform Statistics</h3>
-            <p>Testing statistics from the current session:</p>
-            <ul role="list" aria-label="Statistics">
-                <li><strong>Pages Scanned:</strong> 142</li>
-                <li><strong>Issues Found:</strong> 37</li>
-                <li><strong>Issues Fixed:</strong> 29</li>
-                <li><strong>Compliance Rate:</strong> 94.2%</li>
-            </ul>
-        </section>
     </main>
 
-    <!-- GOOD: Footer landmark -->
     <footer role="contentinfo">
-        <p>&copy; 2026 Aegis Accessibility Testing Platform. Built for inclusive web experiences.</p>
+        <p>&copy; 2026 Aegis Accessibility Testing Platform.</p>
     </footer>
-
-    <!-- Modal (for testing focus trapping) -->
-    <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal">
-            <h2 id="modal-title">Accessibility Report</h2>
-            <p>Your page scan found 5 critical issues that need attention.</p>
-            <button class="btn btn-primary" onclick="closeModal()">View Details</button>
-            <button class="modal-close" onclick="closeModal()" aria-label="Close dialog">&times;</button>
-        </div>
-    </div>
 
     <script src="js/app.js"></script>
 </body>

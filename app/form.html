@@ -34,9 +34,6 @@
                         <circle cx="12" cy="12" r="5"/>
                         <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                     </svg>
-                    <svg class="theme-toggle-icon theme-toggle-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                    </svg>
                     <span class="sr-only">Toggle theme</span>
                 </button>
             </div>
@@ -46,112 +43,30 @@
     <main id="main-content" role="main">
         <h1 class="section-title">Contact Us</h1>
 
-        <div class="alert alert-info" role="alert">
-            <span aria-hidden="true">&#9432;</span>
-            <span>Fields marked with <span class="required-star" aria-hidden="true">*</span> are required.</span>
-        </div>
-
         <div class="form-container">
-            <!-- GOOD: Form with proper fieldset and legend -->
             <form id="contact-form" novalidate>
-                <fieldset>
-                    <legend><h2 style="font-size:1.3rem;">Personal Information</h2></legend>
-
-                    <!-- GOOD: Properly labeled input -->
-                    <div class="form-group">
-                        <label for="full-name">Full Name <span class="required-star" aria-hidden="true">*</span></label>
-                        <input type="text" id="full-name" name="fullName" required aria-required="true" autocomplete="name">
-                        <span class="error-msg" id="name-error" role="alert">Please enter your full name.</span>
-                    </div>
-
-                    <!-- GOOD: Properly labeled email -->
-                    <div class="form-group">
-                        <label for="email">Email Address <span class="required-star" aria-hidden="true">*</span></label>
-                        <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" aria-describedby="email-hint">
-                        <small id="email-hint" style="color: var(--text-secondary);">We'll never share your email with anyone.</small>
-                        <span class="error-msg" id="email-error" role="alert">Please enter a valid email address.</span>
-                    </div>
-
-                    <!-- DEMO BUG #2: Input without label (fix: add <label for="phone">Phone Number</label>) -->
-                    <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" autocomplete="tel">
-                    </div>
-                </fieldset>
-
-                <fieldset style="margin-top: 20px;">
-                    <legend><h2 style="font-size:1.3rem;">Inquiry Details</h2></legend>
-
-                    <!-- GOOD: Select with label -->
-                    <div class="form-group">
-                        <label for="subject">Subject <span class="required-star" aria-hidden="true">*</span></label>
-                        <select id="subject" name="subject" required aria-required="true">
-                            <option value="">-- Select a topic --</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="support">Technical Support</option>
-                            <option value="billing">Billing Question</option>
-                            <option value="feature">Feature Request</option>
-                            <option value="bug">Bug Report</option>
-                        </select>
-                        <span class="error-msg" id="subject-error" role="alert">Please select a subject.</span>
-                    </div>
-
-                    <!-- GOOD: Textarea with label -->
-                    <div class="form-group">
-                        <label for="message">Message <span class="required-star" aria-hidden="true">*</span></label>
-                        <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="msg-hint"></textarea>
-                        <small id="msg-hint" style="color: var(--text-secondary);">Minimum 20 characters.</small>
-                        <span class="error-msg" id="message-error" role="alert">Please enter a message (at least 20 characters).</span>
-                    </div>
-
-                    <!-- GOOD: Radio group with fieldset -->
-                    <fieldset class="form-group">
-                        <legend style="font-weight:600; margin-bottom:6px;">Priority Level</legend>
-                        <div style="display:flex; gap:20px; flex-wrap:wrap;">
-                            <label style="font-weight:normal;">
-                                <input type="radio" name="priority" value="low"> Low
-                            </label>
-                            <label style="font-weight:normal;">
-                                <input type="radio" name="priority" value="medium" checked> Medium
-                            </label>
-                            <label style="font-weight:normal;">
-                                <input type="radio" name="priority" value="high"> High
-                            </label>
-                        </div>
-                    </fieldset>
-
-                    <!-- GOOD: Checkbox with label -->
-                    <div class="form-group">
-                        <label style="font-weight:normal; display:flex; align-items:center; gap:8px;">
-                            <input type="checkbox" name="subscribe" id="subscribe">
-                            Subscribe to accessibility updates newsletter
-                        </label>
-                    </div>
-
-                    <!-- GOOD: Checkbox with associated label -->
-                    <div class="form-group">
-                        <label style="font-weight:normal; display:flex; align-items:center; gap:8px;">
-                            <input type="checkbox" name="terms" id="terms-cb" required>
-                            I agree to the terms and conditions
-                        </label>
-                    </div>
-                </fieldset>
-
-                <!-- GOOD: Natural tab order -->
-                <div style="display:flex; gap:12px; margin-top:24px;">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Clear Form</button>
+                <div class="form-group">
+                    <label for="full-name">Full Name <span class="required-star" aria-hidden="true">*</span></label>
+                    <input type="text" id="full-name" name="fullName" required aria-required="true">
                 </div>
 
-                <!-- Form status (for screen reader announcements) -->
-                <div id="form-status" aria-live="assertive" class="mt-4"></div>
-            </form>
-        </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="required-star" aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
 
-        <!-- GOOD: Proper heading level -->
-        <div class="card mt-4">
-            <h2>Other Ways to Reach Us</h2>
-            <p>Email: <a href="mailto:support@aegis-testing.dev">support@aegis-testing.dev</a></p>
-            <p><small>Response time: 24-48 hours</small></p>
+                <!-- DEMO BUG #2: Input without label (fix: add <label for="phone">Phone</label>) -->
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message <span class="required-star" aria-hidden="true">*</span></label>
+                    <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </main>
 
