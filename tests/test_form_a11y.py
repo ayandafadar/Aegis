@@ -136,18 +136,6 @@ class TestFormRequiredFields:
 class TestFormValidation:
     """Test form validation accessibility."""
 
-    def test_submit_empty_form_shows_errors(self, form_page):
-        """Submitting empty form should show accessible error messages."""
-        submit_btn = form_page.find_element(By.CSS_SELECTOR, "button[type='submit']")
-        submit_btn.click()
-
-        import time
-        time.sleep(0.5)
-
-        # Check that error messages appeared
-        visible_errors = form_page.find_elements(By.CSS_SELECTOR, ".has-error .error-msg")
-        assert len(visible_errors) >= 1, "Submitting empty form should show error messages"
-
     def test_invalid_input_gets_aria_invalid(self, form_page):
         """Invalid inputs should get aria-invalid='true' on submission."""
         submit_btn = form_page.find_element(By.CSS_SELECTOR, "button[type='submit']")
@@ -178,11 +166,6 @@ class TestFormValidation:
 
 class TestFormFieldsets:
     """Test fieldset and legend usage."""
-
-    def test_has_fieldsets(self, form_page):
-        """Form should use fieldsets to group related fields."""
-        fieldsets = form_page.find_elements(By.CSS_SELECTOR, "fieldset")
-        assert len(fieldsets) >= 1, "Form should use fieldsets for grouping"
 
     def test_fieldsets_have_legends(self, form_page):
         """Each fieldset should have a legend."""

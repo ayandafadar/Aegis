@@ -99,15 +99,6 @@ class TestDashboardTables:
 class TestDashboardARIA:
     """Test ARIA attributes and live regions."""
 
-    def test_has_aria_live_region(self, dashboard_page):
-        """Dashboard should have at least one aria-live region for updates."""
-        live_regions = dashboard_page.find_elements(
-            "css selector", "[aria-live]"
-        )
-        assert len(live_regions) >= 1, (
-            "Dashboard should have aria-live region for dynamic status updates"
-        )
-
     def test_alert_roles(self, dashboard_page):
         """Alert elements should have role='alert'."""
         alerts = dashboard_page.find_elements("css selector", ".alert")

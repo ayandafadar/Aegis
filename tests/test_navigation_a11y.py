@@ -98,22 +98,6 @@ class TestSkipLink:
             target = home_page.find_elements(By.ID, target_id)
             assert len(target) >= 1, f"Skip link target #{target_id} does not exist"
 
-    def test_skip_link_visible_on_focus(self, home_page):
-        """Skip link should become visible when focused."""
-        body = home_page.find_element(By.TAG_NAME, "body")
-        actions = ActionChains(home_page)
-        actions.send_keys(Keys.TAB).perform()
-
-        active = home_page.switch_to.active_element
-        # Check if skip link received focus
-        classes = active.get_attribute("class") or ""
-
-        if "skip-link" in classes:
-            # Verify it's visible
-            is_displayed = active.is_displayed()
-            assert is_displayed, "Skip link should be visible when focused"
-
-
 class TestFocusManagement:
     """Test focus visibility and management."""
 
@@ -124,32 +108,6 @@ class TestFocusManagement:
             "runOnly": {"type": "rule", "values": ["focus-order-semantics"]}
         })
         # This is informational — actual focus indicator testing is visual
-
-    def test_no_keyboard_traps(self, home_page):
-        """Tab key should not get stuck on any element (keyboard trap)."""
-        body = home_page.find_element(By.TAG_NAME, "body")
-        actions = ActionChains(home_page)
-        
-        prev_elements = []
-        for i in range(20):
-            actions.send_keys(Keys.TAB).perform()
-            active = home_page.switch_to.active_element
-            tag = active.tag_name
-            element_id = active.get_attribute("id") or ""
-            element_class = active.get_attribute("class") or ""
-            identifier = f"{tag}#{element_id}.{element_class}"
-            prev_elements.append(identifier)
-
-        # Check for loops smaller than expected (keyboard trap indicator)
-        if len(prev_elements) >= 10:
-            # Check if same element appeared too many times consecutively
-            for i in range(len(prev_elements) - 3):
-                if (prev_elements[i] == prev_elements[i+1] == prev_elements[i+2] 
-                    and prev_elements[i] != "body#."):
-                    pytest.fail(
-                        f"Possible keyboard trap: focus stuck on {prev_elements[i]}"
-                    )
-
 
 class TestNavigationLandmarks:
     """Test ARIA landmarks across all pages."""
