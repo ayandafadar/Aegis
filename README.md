@@ -125,14 +125,53 @@ pytest tests/ -v --html=reports/a11y_report.html
 
 ---
 
-## Development Workflow
+## Complete Project Workflow
 
-1. Modify frontend files inside `app/`
-2. Run local tests using pytest
-3. Fix any reported accessibility violations
-4. Commit and push changes
-5. CI runs automatically
-6. Merge only if tests pass
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           DEVELOPMENT WORKFLOW                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. DEVELOP                    2. TEST LOCALLY                              │
+│  ┌─────────────────┐           ┌─────────────────────────────────────────┐  │
+│  │ Edit HTML/CSS   │           │ python serve.py                         │  │
+│  │ in app/ folder  │ ────────► │ python -m pytest tests/ -v              │  │
+│  └─────────────────┘           └─────────────────────────────────────────┘  │
+│                                              │                              │
+│                                              ▼                              │
+│                                ┌─────────────────────────────────────────┐  │
+│                                │ axe-core scans page via Selenium        │  │
+│                                │ Returns WCAG violations by severity     │  │
+│                                └─────────────────────────────────────────┘  │
+│                                              │                              │
+│  3. COMMIT & PUSH                            ▼                              │
+│  ┌─────────────────┐           ┌─────────────────────────────────────────┐  │
+│  │ git add .       │           │ 48 tests pass, 4 fail (intentional)     │  │
+│  │ git commit      │           │ Report: reports/report.html             │  │
+│  │ git push        │           └─────────────────────────────────────────┘  │
+│  └─────────────────┘                                                        │
+│          │                                                                  │
+│          ▼                                                                  │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                     GITHUB ACTIONS (CI)                             │    │
+│  ├─────────────────────────────────────────────────────────────────────┤    │
+│  │  • Triggered on push/PR to main                                     │    │
+│  │  • Spins up Ubuntu runner with Python + Chrome                      │    │
+│  │  • Installs dependencies from requirements.txt                      │    │
+│  │  • Starts serve.py in background                                    │    │
+│  │  • Runs full pytest suite headlessly                                │    │
+│  │  • Uploads HTML report as downloadable artifact                     │    │
+│  │  • Comments on PR if tests fail                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                              │                              │
+│                                              ▼                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  ✓ All tests pass → PR can be merged                                │    │
+│  │  ✗ Tests fail → Fix accessibility issues before merging             │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
