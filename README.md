@@ -1,14 +1,16 @@
-# Aegis  
-Automated Accessibility Testing with Selenium + axe-core
+# Aegis
 
-Aegis integrates automated accessibility (a11y) testing directly into a Selenium-powered test suite using axe-core, the industry-standard accessibility engine.
+**Automated Accessibility Testing with Selenium + axe-core**
 
-It includes a sample frontend web application intentionally containing both accessible and inaccessible patterns, making it a complete accessibility testing playground.
+Aegis is an automated accessibility testing framework that integrates **axe-core**, the industry-standard accessibility engine, into a **Selenium-based testing workflow using Node.js**.
 
-![Accessibility Tests](https://github.com/ayandafadar/Aegis/actions/workflows/a11y-tests.yml/badge.svg)
+The project includes a **demo web application with intentional accessibility issues**, allowing developers to test, detect, and understand accessibility violations in a controlled environment.
+
+Aegis helps teams integrate **WCAG accessibility validation directly into automated testing and CI/CD pipelines**.
+
 ---
 
-## Why Aegis?
+# Why Aegis?
 
 Accessibility testing is often:
 
@@ -19,207 +21,174 @@ Accessibility testing is often:
 
 Aegis solves this by:
 
-- Embedding WCAG validation into automated tests  
-- Generating structured HTML reports  
-- Running in CI/CD automatically  
-- Catching accessibility regressions before merge  
+- Embedding accessibility validation directly into automated tests
+- Detecting **WCAG violations automatically**
+- Generating structured accessibility reports
+- Running accessibility checks in **CI/CD pipelines**
+- Catching accessibility regressions before deployment
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```
 Aegis/
-├── app/
-│   ├── index.html
-│   ├── dashboard.html
-│   ├── form.html
-│   ├── css/styles.css
-│   └── js/app.js
+│
+├── demo-app/
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── login.html
+│   │   └── contact.html
+│   └── server.js
+│
 ├── tests/
-│   ├── conftest.py
-│   ├── test_home_a11y.py
-│   ├── test_dashboard_a11y.py
-│   ├── test_form_a11y.py
-│   └── test_navigation_a11y.py
+│   ├── homepage.test.js
+│   ├── login.test.js
+│   └── contact.test.js
+│
 ├── utils/
-│   ├── axe_helper.py
-│   └── report_generator.py
+│
 ├── reports/
-├── requirements.txt
-├── pytest.ini
-├── serve.py
+│   ├── history/
+│   │   └── timestamped test runs
+│   ├── report.html
+│   ├── accessibility-report.json
+│   ├── run-summary.json
+│   └── test-run.log
+│
+├── screenshots/
+│
+├── .github/workflows/
+│   ├── ci.yml
+│   └── deploy-pages.yml
+│
+├── runner.js
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+├── package-lock.json
 └── README.md
 ```
 
----
 
-## Features
+# Quick Start
 
-### axe-core Integration
-Injects axe-core directly into Selenium browser sessions.
-
-### WCAG 2.1 Validation
-Tests against:
-- WCAG 2.0 Level A  
-- WCAG 2.0 Level AA  
-- WCAG 2.1 Level AA  
-- Section 508  
-
-### Keyboard Navigation Testing
-- Tab order  
-- Focus visibility  
-- Skip links  
-- Focus trapping  
-
-### Color Contrast Checking
-Automated validation of contrast ratios.
-
-### ARIA Role & Landmark Validation
-Ensures semantic structure and ARIA compliance.
-
-### HTML Report Generation
-Detailed accessibility reports with violation severity breakdown.
-
-### CI/CD Ready
-Runs automatically in GitHub Actions.
-
----
-
-## Quick Start
-
-### 1. Install dependencies
+## 1 Install dependencies
 
 ```bash
-pip install -r requirements.txt
+npm install
 ```
 
-### 2. Start the sample app
+---
+
+## 2 Start the demo application
 
 ```bash
-python serve.py
+node demo-app/server.js
 ```
 
-### 3. Run accessibility tests
+The demo site will run locally.
+
+---
+
+## 3 Run accessibility tests
 
 ```bash
-pytest tests/ -v --tb=short
+node runner.js
 ```
 
-### 4. Generate HTML report
+This will:
 
-```bash
-pytest tests/ -v --html=reports/a11y_report.html
-```
+- Run Selenium tests
+- Execute axe-core accessibility scans
+- Capture screenshots
+- Generate accessibility reports
 
 ---
 
-## Test Coverage Overview
+## 4 View the report
 
-| Test File | What It Validates |
-|------------|------------------|
-| test_home_a11y.py | Landmarks, headings, links, images |
-| test_dashboard_a11y.py | Tables, charts, dynamic content |
-| test_form_a11y.py | Labels, validation errors, required fields |
-| test_navigation_a11y.py | Keyboard flow, focus management |
-
----
-
-## Complete Project Workflow
+Open the generated report:
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           DEVELOPMENT WORKFLOW                              │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  1. DEVELOP                    2. TEST LOCALLY                              │
-│  ┌─────────────────┐           ┌─────────────────────────────────────────┐  │
-│  │ Edit HTML/CSS   │           │ python serve.py                         │  │
-│  │ in app/ folder  │ ────────► │ python -m pytest tests/ -v              │  │
-│  └─────────────────┘           └─────────────────────────────────────────┘  │
-│                                              │                              │
-│                                              ▼                              │
-│                                ┌─────────────────────────────────────────┐  │
-│                                │ axe-core scans page via Selenium        │  │
-│                                │ Returns WCAG violations by severity     │  │
-│                                └─────────────────────────────────────────┘  │
-│                                              │                              │
-│  3. COMMIT & PUSH                            ▼                              │
-│  ┌─────────────────┐           ┌─────────────────────────────────────────┐  │
-│  │ git add .       │           │ 48 tests pass, 4 fail (intentional)     │  │
-│  │ git commit      │           │ Report: reports/report.html             │  │
-│  │ git push        │           └─────────────────────────────────────────┘  │
-│  └─────────────────┘                                                        │
-│          │                                                                  │
-│          ▼                                                                  │
-│  ┌─────────────────────────────────────────────────────────────────────┐    │
-│  │                     GITHUB ACTIONS (CI)                             │    │
-│  ├─────────────────────────────────────────────────────────────────────┤    │
-│  │  • Triggered on push/PR to main                                     │    │
-│  │  • Spins up Ubuntu runner with Python + Chrome                      │    │
-│  │  • Installs dependencies from requirements.txt                      │    │
-│  │  • Starts serve.py in background                                    │    │
-│  │  • Runs full pytest suite headlessly                                │    │
-│  │  • Uploads HTML report as downloadable artifact                     │    │
-│  │  • Comments on PR if tests fail                                     │    │
-│  └─────────────────────────────────────────────────────────────────────┘    │
-│                                              │                              │
-│                                              ▼                              │
-│  ┌─────────────────────────────────────────────────────────────────────┐    │
-│  │  ✓ All tests pass → PR can be merged                                │    │
-│  │  ✗ Tests fail → Fix accessibility issues before merging             │    │
-│  └─────────────────────────────────────────────────────────────────────┘    │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+reports/report.html
+```
+
+Historical reports are available in:
+
+```
+reports/history/
 ```
 
 ---
 
-## CI/CD Integration
+# Example Accessibility Violations Detected
 
-Aegis includes a GitHub Actions workflow that:
+Aegis can detect issues such as:
 
-- Triggers on push or pull request to `main`
-- Installs Python 3.11
-- Installs Chrome browser
-- Starts local development server
-- Runs headless Selenium tests
-- Uploads HTML report as artifact
-- Fails pull request if accessibility tests fail
-
-## How axe-core Integration Works
-
-1. Selenium launches the browser (headless mode).
-2. `axe_helper.py` injects axe.min.js into the page.
-3. `axe.run()` scans the DOM.
-4. Violations are returned as JSON.
-5. Pytest asserts based on severity.
-6. HTML report is generated.
+- Missing image alt text
+- Low color contrast
+- Missing form labels
+- Improper ARIA roles
+- Invalid heading structure
+- Missing landmarks
+- Keyboard navigation issues
 
 ---
 
-## Tech Stack
+# Development Workflow
 
-- Python 3.11+
-- Selenium
+```
+Developer edits frontend code
+        │
+        ▼
+Run accessibility tests locally
+        │
+        ▼
+Selenium loads web pages
+        │
+        ▼
+axe-core scans the DOM
+        │
+        ▼
+Accessibility violations detected
+        │
+        ▼
+Reports generated automatically
+        │
+        ▼
+CI pipeline runs tests on push/PR
+        │
+        ▼
+Accessibility regressions prevented
+```
+
+---
+
+# Tech Stack
+
+Runtime
+
+- Node.js
+
+Testing
+
+- Selenium WebDriver
 - axe-core
-- Pytest
+
+Automation
+
+- JavaScript (Node.js)
+
+Reporting
+
+- HTML reports
+- JSON reports
+- Screenshots
+
+Infrastructure
+
+- Docker
 - GitHub Actions
 
 ---
-
-## Who Is This For?
-
-- QA Engineers  
-- Frontend Developers  
-- DevOps Engineers  
-- Accessibility Advocates  
-- Teams implementing shift-left accessibility testing  
-
----
-
-## Future Enhancements
-
-- Lighthouse integration  
-- Slack/Discord failure notifications  
-- Accessibility score dashboard  
