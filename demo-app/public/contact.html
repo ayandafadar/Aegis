@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
     .contact-wrapper { padding: 24px; max-width: 980px; margin: 0 auto; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .contact-info, .contact-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px; }
-    .contact-info p { color: #c7c7c7; margin: 10px 0 16px; }
+    .contact-info p { color: #4b5563; margin: 10px 0 16px; }
     .info-item { margin-bottom: 10px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .form-group { margin-bottom: 10px; }
@@ -47,42 +47,42 @@
     </nav>
   </header>
 
-  <div class="contact-wrapper">
-    <div class="contact-grid">
-      <div class="contact-info">
-        <h1>Book a demo</h1>
-        <p class="a11y-mark" data-issue="contrast">This is a testing page with intentional accessibility gaps for scanner output.</p>
-        <div class="info-item"><strong>Email:</strong> hello@aegis.demo</div>
-        <div class="info-item"><strong>Phone:</strong> +1 555 0100</div>
-        <div class="info-item"><strong>Office:</strong> Remote-first</div>
-        <img src="/img/contact-decoration.png" class="contact-decor a11y-mark" data-issue="missing alt" width="180">
-        <div class="a11y-callout">Demo markers highlight intentional issues reported by axe: contrast, image alt text, and form naming.</div>
-      </div>
+  <main>
+    <div class="contact-wrapper">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h1>Book a demo</h1>
+          <p>This is a testing page with intentional accessibility gaps for scanner output.</p>
+          <div class="info-item"><strong>Email:</strong> hello@aegis.demo</div>
+          <div class="info-item"><strong>Phone:</strong> +1 555 0100</div>
+          <div class="info-item"><strong>Office:</strong> Remote-first</div>
+        </div>
 
-      <div class="contact-card">
-        <img src="/img/form-header.png" class="a11y-mark" data-issue="missing alt" width="40" height="40" style="margin-bottom:10px;">
-        <h2>Contact form</h2>
+        <div class="contact-card">
+          <h2>Contact form</h2>
 
-        <form action="/contact" method="POST" id="contact-form">
-          <div class="form-row">
-            <div class="form-group"><input type="text" name="firstName" id="firstName" placeholder="First name" required></div>
-            <div class="form-group"><input type="text" name="lastName" id="lastName" placeholder="Last name" required></div>
-          </div>
-          <div class="form-group"><input type="email" name="email" id="contactEmail" placeholder="Work email" required></div>
-          <div class="form-group"><input type="text" name="company" id="company" placeholder="Company"></div>
-          <div class="form-group">
-            <select name="teamSize" id="teamSize" class="a11y-mark" data-issue="no label">
-              <option value="">Team size</option>
-              <option value="1-10">1-10</option>
-              <option value="11-50">11-50</option>
-              <option value="50+">50+</option>
-            </select>
-          </div>
-          <div class="form-group"><textarea name="message" id="message" placeholder="How can we help?"></textarea></div>
-          <button type="submit" class="btn-submit">Send message</button>
-        </form>
+          <form action="/contact" method="POST" id="contact-form">
+            <div class="form-row">
+              <div class="form-group"><input type="text" name="firstName" id="firstName" placeholder="First name" required></div>
+              <div class="form-group"><input type="text" name="lastName" id="lastName" placeholder="Last name" required></div>
+            </div>
+            <div class="form-group"><input type="email" name="email" id="contactEmail" placeholder="Work email" required></div>
+            <div class="form-group"><input type="text" name="company" id="company" placeholder="Company"></div>
+            <div class="form-group">
+              <label for="teamSize">Team size</label>
+              <select name="teamSize" id="teamSize">
+                <option value="">Team size</option>
+                <option value="1-10">1-10</option>
+                <option value="11-50">11-50</option>
+                <option value="50+">50+</option>
+              </select>
+            </div>
+            <div class="form-group"><textarea name="message" id="message" placeholder="How can we help?"></textarea></div>
+            <button type="submit" class="btn-submit">Send message</button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 </body>
 </html>

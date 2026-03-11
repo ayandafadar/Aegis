@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aegis Test Report</title>
+  <style>
+    body { font-family: Segoe UI, Arial, sans-serif; background:#f4f6fb; color:#111827; margin:0; }
+    .wrap { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+    .top { background:#fff; border:1px solid #dbe1ea; border-radius:10px; padding:16px; margin-bottom:16px; }
+    .meta { color:#4b5563; font-size:14px; }
+    table { width:100%; border-collapse:collapse; background:#fff; border:1px solid #dbe1ea; border-radius:10px; overflow:hidden; }
+    th, td { padding:10px 12px; border-bottom:1px solid #e5e7eb; text-align:left; vertical-align:top; }
+    th { background:#f9fafb; }
+    .pass { color:#166534; font-weight:700; }
+    .fail { color:#991b1b; font-weight:700; }
+    .error { color:#7f1d1d; font-size:13px; }
+    .cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:16px; }
+    .card { background:#fff; border:1px solid #dbe1ea; border-radius:10px; padding:12px; }
+    .links a { color:#1d4ed8; text-decoration:none; margin-right:10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="top">
+      <h1>Aegis Automated Test Report</h1>
+      <p class="meta">Run ID: 20260311-212049 | Time: 2026-03-11T15:50:53.532Z</p>
+      <p class="meta">Tests Passed: 0/1 | Total A11y Violations: 0</p>
+      <p class="links">
+        <a href="/reports/run-summary.json">run-summary.json</a>
+        <a href="/reports/accessibility-report.json">accessibility-report.json</a>
+        <a href="/reports/test-run.log">test-run.log</a>
+        <a href="/reports/history/">history</a>
+      </p>
+    </section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Status</th>
+          <th>Violations</th>
+          <th>Error</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>runner</td>
+          <td class="fail">FAIL</td>
+          <td>N/A</td>
+          <td><div class="error">session not created: Chrome failed to start: crashed.
+  (session not created: DevToolsActivePort file doesn&#39;t exist)
+  (The process started from chrome location C:\Users\ayand\.cache\selenium\chrome\win64\146.0.7680.72\chrome.exe is no longer running, so ChromeDriver is assuming that Chrome has crashed.)</div></td>
+        </tr></tbody>
+    </table>
+
+    <section class="cards"></section>
+  </div>
+</body>
+</html>

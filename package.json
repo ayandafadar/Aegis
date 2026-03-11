@@ -1,15 +1,30 @@
 {
-  "name": "aegis",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "name": "accessibility-testing-integration",
+  "version": "1.0.0",
+  "description": "Accessibility testing integrated into automated Selenium UI tests for a web application",
+  "main": "demo-app/server.js",
   "scripts": {
-    "start": "npm --prefix apps/api run start",
-    "worker": "npm --prefix apps/worker run start"
+    "start": "node demo-app/server.js",
+    "test": "node runner.js",
+    "test:a11y": "node runner.js",
+    "test:fail-demo": "node runner.js",
+    "report:open": "node demo-app/server.js",
+    "docker:build": "docker build -t aegis-a11y-app .",
+    "docker:run": "docker run -p 3000:3000 aegis-a11y-app"
+  },
+  "keywords": [
+    "accessibility",
+    "selenium",
+    "axe-core",
+    "a11y",
+    "testing"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
   },
   "devDependencies": {
-    "@ljharb/tsconfig": "^0.3.2"
+    "selenium-webdriver": "^4.16.0",
+    "axe-core": "^4.8.3"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "runId": "20260311-210535",
+  "timestamp": "2026-03-11T15:35:41.653Z",
+  "totalViolations": 6,
+  "passedCount": 1,
+  "failedCount": 2,
+  "results": [
+    {
+      "page": "/home",
+      "passed": false,
+      "error": "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\".hero .btn-demo\"}\n  (Session info: chrome=146.0.7680.72)"
+    },
+    {
+      "page": "/login",
+      "passed": false,
+      "error": "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"a.signin\"}\n  (Session info: chrome=146.0.7680.72)"
+    },
+    {
+      "page": "/contact",
+      "passed": true,
+      "violationCount": 6
+    }
+  ]
+}

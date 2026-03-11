@@ -45,40 +45,40 @@
         <li><a href="/contact">Careers</a></li>
       </ul>
       <div class="nav-right">
-        <!-- Intentional bug for demo: test expects class="signin" -->
-        <a href="/login" class="sign-in-link">Sign in</a>
+        <a href="/login" class="signin">Sign in</a>
         <a href="/contact" class="btn-primary">Book a demo</a>
       </div>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>DevOps Demo UI</h1>
-    <p>Focused pages for Selenium flows + automated accessibility scans.</p>
-    <!-- Intentional bug for demo: test expects class="btn-demo" -->
-    <a href="/contact" class="btn-demo-broken">Book a demo</a>
-  </section>
+  <main>
+    <section class="hero">
+      <h1>DevOps Demo UI</h1>
+      <p>Focused pages for Selenium flows + automated accessibility scans.</p>
+      <a href="/contact" class="btn-demo">Book a demo</a>
+    </section>
 
-  <section class="test-note">
-    <h2>Intentional A11y Issues</h2>
-    <p>This page intentionally contains accessibility violations for scanning demonstrations.</p>
-    <img src="/img/partners-banner.png" width="320">
-  </section>
+    <section class="test-note">
+      <h2>Intentional A11y Issues</h2>
+      <p>This page intentionally contains accessibility violations for scanning demonstrations.</p>
+      <img src="/img/partners-banner.png" width="320">
+    </section>
 
-  <div class="features">
-    <div class="feature-card">
-      <h3>Connect</h3>
-      <p>Unify test data from multiple sources in one place.</p>
+    <div class="features">
+      <div class="feature-card">
+        <h3>Connect</h3>
+        <p>Unify test data from multiple sources in one place.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Analyze</h3>
+        <p>Run predictable assertions for UI and accessibility behavior.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Sync</h3>
+        <p>Keep reports and screenshots generated for every test run.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <h3>Analyze</h3>
-      <p>Run predictable assertions for UI and accessibility behavior.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Sync</h3>
-      <p>Keep reports and screenshots generated for every test run.</p>
-    </div>
-  </div>
+  </main>
 
   <footer>Demo app for Selenium + axe integration.</footer>
 </body>

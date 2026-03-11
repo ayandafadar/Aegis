@@ -162,7 +162,7 @@ function renderDashboardHtml(summary, accessibilityReport) {
         <a href="/reports/run-summary.json">run-summary.json</a>
         <a href="/reports/accessibility-report.json">accessibility-report.json</a>
         <a href="/reports/test-run.log">test-run.log</a>
-        <a href="/reports/history/">history</a>
+        <a href="/report-history">history</a>
       </p>
     </section>
 
@@ -232,4 +232,6 @@ module.exports = {
   clearCurrentRunLog,
   attachConsoleToLog,
   finalizeRun,
+  renderDashboardHtml,
+  safeReadJson,
 };

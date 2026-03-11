@@ -1,0 +1,190 @@
+[
+  {
+    "page": "/home",
+    "timestamp": "2026-03-11T17:46:54.312Z",
+    "url": "http://localhost:3000/",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "html": "<p>Focused pages for Selenium flows + automated accessibility scans.</p>",
+            "target": [
+              ".hero > p"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.58 (foreground color: #c7c7c7, background color: #f6f8fb, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "html-has-lang",
+        "impact": "serious",
+        "description": "Ensure every HTML document has a lang attribute",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=axeAPI",
+        "nodes": [
+          {
+            "html": "<html>",
+            "target": [
+              "html"
+            ],
+            "failureSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+          }
+        ]
+      },
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt?application=axeAPI",
+        "nodes": [
+          {
+            "html": "<img src=\"/img/partners-banner.png\" width=\"320\">",
+            "target": [
+              "img"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ]
+      }
+    ],
+    "passes": 23,
+    "violationCount": 3
+  },
+  {
+    "page": "/login",
+    "timestamp": "2026-03-11T17:46:55.732Z",
+    "url": "http://localhost:3000/login",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "html": "<p class=\"subtitle\">Use this form to validate Selenium + a11y checks.</p>",
+            "target": [
+              ".subtitle"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.69 (foreground color: #c7c7c7, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "html-has-lang",
+        "impact": "serious",
+        "description": "Ensure every HTML document has a lang attribute",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=axeAPI",
+        "nodes": [
+          {
+            "html": "<html>",
+            "target": [
+              "html"
+            ],
+            "failureSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+          }
+        ]
+      },
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt?application=axeAPI",
+        "nodes": [
+          {
+            "html": "<img src=\"/img/login-illustration.png\" class=\"login-banner\" width=\"64\" height=\"64\">",
+            "target": [
+              "img"
+            ],
+            "failureSummary": "Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ]
+      },
+      {
+        "id": "landmark-one-main",
+        "impact": "moderate",
+        "description": "Ensure the document has a main landmark",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=axeAPI",
+        "nodes": [
+          {
+            "html": "<html>",
+            "target": [
+              "html"
+            ],
+            "failureSummary": "Fix all of the following:\n  Document does not have a main landmark"
+          }
+        ]
+      },
+      {
+        "id": "region",
+        "impact": "moderate",
+        "description": "Ensure all page content is contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=axeAPI",
+        "nodes": [
+          {
+            "html": "<img src=\"/img/login-illustration.png\" class=\"login-banner\" width=\"64\" height=\"64\">",
+            "target": [
+              "img"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          },
+          {
+            "html": "<h1>Sign in</h1>",
+            "target": [
+              "h1"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          },
+          {
+            "html": "<p class=\"subtitle\">Use this form to validate Selenium + a11y checks.</p>",
+            "target": [
+              ".subtitle"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          },
+          {
+            "html": "<div class=\"form-group\">\n          <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email address\" required=\"\">\n        </div>",
+            "target": [
+              ".form-group:nth-child(1)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          },
+          {
+            "html": "<div class=\"form-group\">\n          <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" required=\"\">\n        </div>",
+            "target": [
+              ".form-group:nth-child(2)"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          },
+          {
+            "html": "<div class=\"form-options\">\n          <label><input type=\"checkbox\"> Remember me</label>\n          <a href=\"#\">Forgot password?</a>\n        </div>",
+            "target": [
+              ".form-options"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          },
+          {
+            "html": "<p class=\"signup-link\">Need access? <a href=\"/contact\">Request demo</a></p>",
+            "target": [
+              ".signup-link"
+            ],
+            "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+          }
+        ]
+      }
+    ],
+    "passes": 20,
+    "violationCount": 5
+  },
+  {
+    "page": "/contact",
+    "timestamp": "2026-03-11T17:46:58.255Z",
+    "url": "http://localhost:3000/contact",
+    "violations": [],
+    "passes": 29,
+    "violationCount": 0
+  }
+]

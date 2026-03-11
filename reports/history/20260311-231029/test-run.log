@@ -1,0 +1,179 @@
+╔══════════════════════════════════════════════════╗
+║   Aegis - Accessibility Testing Integration     ║
+║   Selenium + axe-core Automated Scans           ║
+╚══════════════════════════════════════════════════╝
+
+🚀 Starting demo web app...
+Demo app running at http://localhost:3000
+
+🏠 HOMEPAGE TEST
+────────────────────────────────────────
+  → Navigating to homepage...
+  ✓ Homepage loaded
+  ✓ Hero heading found: "DevOps Demo UI..."
+  ✓ Navigation links found: 4
+  ✓ Feature cards found: 3
+  → Clicking 'Book a demo' CTA...
+  ✓ Navigated to contact page
+  → Running accessibility scan...
+
+==================================================
+Accessibility Test Results
+--------------------------------------------------
+Page: /home
+Scanned: 2026-03-11T17:40:32.433Z
+Passes: 26
+Violations: 0
+--------------------------------------------------
+  ✓ No accessibility violations found!
+==================================================
+  📄 Report saved to C:\Users\ayand\Desktop\Projects\Aegis\reports\accessibility-report.json
+  📸 Screenshot saved to C:\Users\ayand\Desktop\Projects\Aegis\screenshots\_home.png
+
+🔐 LOGIN PAGE TEST
+────────────────────────────────────────
+  → Navigating to homepage...
+  → Clicking 'Sign in' link...
+  ✓ Login page loaded
+  ✓ Login form elements found
+  → Filling login form...
+  ✓ Form filled with test credentials
+  → Running accessibility scan...
+
+==================================================
+Accessibility Test Results
+--------------------------------------------------
+Page: /login
+Scanned: 2026-03-11T17:40:33.894Z
+Passes: 20
+Violations: 5
+--------------------------------------------------
+
+Violations:
+
+  1. color-contrast (serious)
+     Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds
+     Help: https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI
+     Affected elements: 1
+       - <p class="subtitle">Use this form to validate Selenium + a11y checks.</p>
+
+  2. html-has-lang (serious)
+     Ensure every HTML document has a lang attribute
+     Help: https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=axeAPI
+     Affected elements: 1
+       - <html>
+
+  3. image-alt (critical)
+     Ensure <img> elements have alternative text or a role of none or presentation
+     Help: https://dequeuniversity.com/rules/axe/4.11/image-alt?application=axeAPI
+     Affected elements: 1
+       - <img src="/img/login-illustration.png" class="login-banner" width="64" height="64">
+
+  4. landmark-one-main (moderate)
+     Ensure the document has a main landmark
+     Help: https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=axeAPI
+     Affected elements: 1
+       - <html>
+
+  5. region (moderate)
+     Ensure all page content is contained by landmarks
+     Help: https://dequeuniversity.com/rules/axe/4.11/region?application=axeAPI
+     Affected elements: 7
+       - <img src="/img/login-illustration.png" class="login-banner" width="64" height="64">
+       - <h1>Sign in</h1>
+       - <p class="subtitle">Use this form to validate Selenium + a11y checks.</p>
+       - <div class="form-group">
+          <input type="email" name="email" id="email" placeholder="Email ad
+       - <div class="form-group">
+          <input type="password" name="password" id="password" placeholder=
+       - <div class="form-options">
+          <label><input type="checkbox"> Remember me</label>
+          <a
+       - <p class="signup-link">Need access? <a href="/contact">Request demo</a></p>
+==================================================
+  📄 Report saved to C:\Users\ayand\Desktop\Projects\Aegis\reports\accessibility-report.json
+  📸 Screenshot saved to C:\Users\ayand\Desktop\Projects\Aegis\screenshots\_login.png
+  → Submitting login form...
+  ✓ Form submitted
+
+📬 CONTACT PAGE TEST
+────────────────────────────────────────
+  → Navigating to contact page...
+  ✓ Contact page loaded
+  ✓ Contact form elements found
+  → Filling contact form...
+  ✓ Form filled with test data
+  → Running accessibility scan...
+
+==================================================
+Accessibility Test Results
+--------------------------------------------------
+Page: /contact
+Scanned: 2026-03-11T17:40:36.404Z
+Passes: 21
+Violations: 6
+--------------------------------------------------
+
+Violations:
+
+  1. color-contrast (serious)
+     Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds
+     Help: https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI
+     Affected elements: 1
+       - <p class="a11y-mark" data-issue="contrast">This is a testing page with intentional accessibility gap
+
+  2. html-has-lang (serious)
+     Ensure every HTML document has a lang attribute
+     Help: https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=axeAPI
+     Affected elements: 1
+       - <html>
+
+  3. image-alt (critical)
+     Ensure <img> elements have alternative text or a role of none or presentation
+     Help: https://dequeuniversity.com/rules/axe/4.11/image-alt?application=axeAPI
+     Affected elements: 2
+       - <img src="/img/contact-decoration.png" class="contact-decor a11y-mark" data-issue="missing alt" widt
+       - <img src="/img/form-header.png" class="a11y-mark" data-issue="missing alt" width="40" height="40" st
+
+  4. landmark-one-main (moderate)
+     Ensure the document has a main landmark
+     Help: https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=axeAPI
+     Affected elements: 1
+       - <html>
+
+  5. region (moderate)
+     Ensure all page content is contained by landmarks
+     Help: https://dequeuniversity.com/rules/axe/4.11/region?application=axeAPI
+     Affected elements: 8
+       - <div class="contact-info">
+       - <img src="/img/form-header.png" class="a11y-mark" data-issue="missing alt" width="40" height="40" st
+       - <h2>Contact form</h2>
+       - <div class="form-row">
+            <div class="form-group"><input type="text" name="firstName" id="f
+       - <div class="form-group"><input type="email" name="email" id="contactEmail" placeholder="Work email" 
+       - <div class="form-group"><input type="text" name="company" id="company" placeholder="Company"></div>
+       - <div class="form-group">
+       - <div class="form-group"><textarea name="message" id="message" placeholder="How can we help?"></texta
+
+  6. select-name (critical)
+     Ensure select element has an accessible name
+     Help: https://dequeuniversity.com/rules/axe/4.11/select-name?application=axeAPI
+     Affected elements: 1
+       - <select name="teamSize" id="teamSize" class="a11y-mark" data-issue="no label">
+              <option
+==================================================
+  📄 Report saved to C:\Users\ayand\Desktop\Projects\Aegis\reports\accessibility-report.json
+  📸 Screenshot saved to C:\Users\ayand\Desktop\Projects\Aegis\screenshots\_contact.png
+  → Submitting contact form...
+  ✓ Form submitted
+
+
+╔══════════════════════════════════════════════════╗
+║              TEST SUMMARY                        ║
+╠══════════════════════════════════════════════════╣
+║  ✓ PASS  /home        Violations: 0    ║
+║  ✗ FAIL  /login       Violations: 5    ║
+║  ✗ FAIL  /contact     Violations: 6    ║
+╠══════════════════════════════════════════════════╣
+║  Total Accessibility Violations: 11               ║
+╚══════════════════════════════════════════════════╝

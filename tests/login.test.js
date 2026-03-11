@@ -48,8 +48,12 @@ async function loginTest() {
 
     return {
       page: "/login",
-      passed: true,
+      passed: violations.length === 0,
       violationCount: violations.length,
+      error:
+        violations.length > 0
+          ? `${violations.length} accessibility violation(s) found`
+          : undefined,
     };
   } catch (err) {
     console.error(`  ✗ Login test failed: ${err.message}`);

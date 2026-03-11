@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const { renderDashboardHtml, safeReadJson } = require("../utils/reportManager");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,11 +24,22 @@ app.get("/contact", (_req, res) => {
 });
 
 app.get("/report", (_req, res) => {
-  const reportHtml = path.join(__dirname, "..", "reports", "report.html");
-  if (fs.existsSync(reportHtml)) {
-    return res.sendFile(reportHtml);
+  const reportsDir = path.join(__dirname, "..", "reports");
+  const summaryFile = path.join(reportsDir, "run-summary.json");
+  const a11yFile = path.join(reportsDir, "accessibility-report.json");
+
+  if (!fs.existsSync(summaryFile)) {
+    return res.status(404).send("No report found yet. Run npm test first.");
   }
-  return res.status(404).send("No report found yet. Run npm test first.");
+
+  const summary = safeReadJson(summaryFile, null);
+  if (!summary) {
+    return res.status(500).send("Report summary is invalid.");
+  }
+
+  const a11yData = safeReadJson(a11yFile, []);
+  const html = renderDashboardHtml(summary, a11yData);
+  return res.send(html);
 });
 
 app.get("/report-history", (_req, res) => {
@@ -43,7 +55,7 @@ app.get("/report-history", (_req, res) => {
     .reverse();
 
   const links = runs
-    .map((run) => `<li><a href="/reports/history/${run}/report.html">Run ${run}</a></li>`)
+    .map((run) => `<li><a href="/report-history/${run}">Run ${run}</a></li>`)
     .join("");
 
   return res.send(`<!DOCTYPE html>
@@ -63,6 +75,30 @@ app.get("/report-history", (_req, res) => {
   <ul>${links}</ul>
 </body>
 </html>`);
+});
+
+app.get("/report-history/:runId", (req, res) => {
+  const { runId } = req.params;
+  const runDir = path.join(__dirname, "..", "reports", "history", runId);
+
+  if (!fs.existsSync(runDir) || !fs.statSync(runDir).isDirectory()) {
+    return res.status(404).send("Run not found.");
+  }
+
+  const summaryFile = path.join(runDir, "run-summary.json");
+  const a11yFile = path.join(runDir, "accessibility-report.json");
+
+  if (!fs.existsSync(summaryFile)) {
+    return res.status(404).send("Run summary not found.");
+  }
+
+  const summary = safeReadJson(summaryFile, null);
+  if (!summary) {
+    return res.status(500).send("Run summary is invalid.");
+  }
+
+  const a11yData = safeReadJson(a11yFile, []);
+  return res.send(renderDashboardHtml(summary, a11yData));
 });
 
 app.post("/login", (_req, res) => {

@@ -47,8 +47,12 @@ async function contactTest() {
 
     return {
       page: "/contact",
-      passed: true,
+      passed: violations.length === 0,
       violationCount: violations.length,
+      error:
+        violations.length > 0
+          ? `${violations.length} accessibility violation(s) found`
+          : undefined,
     };
   } catch (err) {
     console.error(`  ✗ Contact test failed: ${err.message}`);

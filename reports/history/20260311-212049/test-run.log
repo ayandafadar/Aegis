@@ -1,0 +1,31 @@
+╔══════════════════════════════════════════════════╗
+║   Aegis - Accessibility Testing Integration     ║
+║   Selenium + axe-core Automated Scans           ║
+╚══════════════════════════════════════════════════╝
+
+🚀 Starting demo web app...
+Demo app running at http://localhost:3000
+
+🏠 HOMEPAGE TEST
+────────────────────────────────────────
+  → Navigating to homepage...
+  ✓ Homepage loaded
+  ✓ Hero heading found: "DevOps Demo UI..."
+  ✓ Navigation links found: 4
+  ✓ Feature cards found: 3
+  ✗ Homepage test failed: no such element: Unable to locate element: {"method":"css selector","selector":".hero .btn-demo"}
+  (Session info: chrome=146.0.7680.72)
+
+🔐 LOGIN PAGE TEST
+────────────────────────────────────────
+  → Navigating to homepage...
+  → Clicking 'Sign in' link...
+  ✗ Login test failed: no such element: Unable to locate element: {"method":"css selector","selector":"a.signin"}
+  (Session info: chrome=146.0.7680.72)
+
+📬 CONTACT PAGE TEST
+────────────────────────────────────────
+
+💥 Test runner error: session not created: Chrome failed to start: crashed.
+  (session not created: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location C:\Users\ayand\.cache\selenium\chrome\win64\146.0.7680.72\chrome.exe is no longer running, so ChromeDriver is assuming that Chrome has crashed.)

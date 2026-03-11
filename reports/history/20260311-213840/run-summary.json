@@ -1,0 +1,24 @@
+{
+  "runId": "20260311-213840",
+  "timestamp": "2026-03-11T16:08:57.012Z",
+  "totalViolations": 6,
+  "passedCount": 1,
+  "failedCount": 2,
+  "results": [
+    {
+      "page": "/home",
+      "passed": false,
+      "error": "Waiting for title to contain \"Signal\"\nWait timed out after 5155ms"
+    },
+    {
+      "page": "/login",
+      "passed": false,
+      "error": "Waiting for title to contain \"Signal\"\nWait timed out after 5205ms"
+    },
+    {
+      "page": "/contact",
+      "passed": true,
+      "violationCount": 6
+    }
+  ]
+}

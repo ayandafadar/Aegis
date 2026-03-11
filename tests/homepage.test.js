@@ -47,8 +47,12 @@ async function homepageTest() {
 
     return {
       page: "/home",
-      passed: true,
+      passed: violations.length === 0,
       violationCount: violations.length,
+      error:
+        violations.length > 0
+          ? `${violations.length} accessibility violation(s) found`
+          : undefined,
     };
   } catch (err) {
     console.error(`  ✗ Homepage test failed: ${err.message}`);

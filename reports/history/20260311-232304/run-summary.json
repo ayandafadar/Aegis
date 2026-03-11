@@ -1,0 +1,26 @@
+{
+  "runId": "20260311-232304",
+  "timestamp": "2026-03-11T17:53:12.808Z",
+  "totalViolations": 8,
+  "passedCount": 1,
+  "failedCount": 2,
+  "results": [
+    {
+      "page": "/home",
+      "passed": false,
+      "violationCount": 3,
+      "error": "3 accessibility violation(s) found"
+    },
+    {
+      "page": "/login",
+      "passed": false,
+      "violationCount": 5,
+      "error": "5 accessibility violation(s) found"
+    },
+    {
+      "page": "/contact",
+      "passed": true,
+      "violationCount": 0
+    }
+  ]
+}

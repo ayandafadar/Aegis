@@ -1,0 +1,107 @@
+╔══════════════════════════════════════════════════╗
+║   Aegis - Accessibility Testing Integration     ║
+║   Selenium + axe-core Automated Scans           ║
+╚══════════════════════════════════════════════════╝
+
+🚀 Starting demo web app...
+Demo app running at http://localhost:3000
+
+🏠 HOMEPAGE TEST
+────────────────────────────────────────
+  → Navigating to homepage...
+  ✓ Homepage loaded
+  ✓ Hero heading found: "DevOps Demo UI..."
+  ✓ Navigation links found: 4
+  ✓ Feature cards found: 3
+  ✗ Homepage test failed: no such element: Unable to locate element: {"method":"css selector","selector":".hero .btn-demo"}
+  (Session info: chrome=146.0.7680.72)
+
+🔐 LOGIN PAGE TEST
+────────────────────────────────────────
+  → Navigating to homepage...
+  → Clicking 'Sign in' link...
+  ✗ Login test failed: no such element: Unable to locate element: {"method":"css selector","selector":"a.signin"}
+  (Session info: chrome=146.0.7680.72)
+
+📬 CONTACT PAGE TEST
+────────────────────────────────────────
+  → Navigating to contact page...
+  ✓ Contact page loaded
+  ✓ Contact form elements found
+  → Filling contact form...
+  ✓ Form filled with test data
+  → Running accessibility scan...
+
+==================================================
+Accessibility Test Results
+--------------------------------------------------
+Page: /contact
+Scanned: 2026-03-11T16:04:58.413Z
+Passes: 21
+Violations: 6
+--------------------------------------------------
+
+Violations:
+
+  1. color-contrast (serious)
+     Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds
+     Help: https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI
+     Affected elements: 1
+       - <p>This is a testing page with intentional accessibility gaps for scanner output.</p>
+
+  2. html-has-lang (serious)
+     Ensure every HTML document has a lang attribute
+     Help: https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=axeAPI
+     Affected elements: 1
+       - <html>
+
+  3. image-alt (critical)
+     Ensure <img> elements have alternative text or a role of none or presentation
+     Help: https://dequeuniversity.com/rules/axe/4.11/image-alt?application=axeAPI
+     Affected elements: 2
+       - <img src="/img/contact-decoration.png" class="contact-decor" width="180">
+       - <img src="/img/form-header.png" width="40" height="40" style="margin-bottom:10px;">
+
+  4. landmark-one-main (moderate)
+     Ensure the document has a main landmark
+     Help: https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=axeAPI
+     Affected elements: 1
+       - <html>
+
+  5. region (moderate)
+     Ensure all page content is contained by landmarks
+     Help: https://dequeuniversity.com/rules/axe/4.11/region?application=axeAPI
+     Affected elements: 8
+       - <div class="contact-info">
+       - <img src="/img/form-header.png" width="40" height="40" style="margin-bottom:10px;">
+       - <h2>Contact form</h2>
+       - <div class="form-row">
+            <div class="form-group"><input type="text" name="firstName" id="f
+       - <div class="form-group"><input type="email" name="email" id="contactEmail" placeholder="Work email" 
+       - <div class="form-group"><input type="text" name="company" id="company" placeholder="Company"></div>
+       - <div class="form-group">
+       - <div class="form-group"><textarea name="message" id="message" placeholder="How can we help?"></texta
+
+  6. select-name (critical)
+     Ensure select element has an accessible name
+     Help: https://dequeuniversity.com/rules/axe/4.11/select-name?application=axeAPI
+     Affected elements: 1
+       - <select name="teamSize" id="teamSize">
+              <option value="">Team size</option>
+           
+==================================================
+  📄 Report saved to C:\Users\ayand\Desktop\Projects\Aegis\reports\accessibility-report.json
+  📸 Screenshot saved to C:\Users\ayand\Desktop\Projects\Aegis\screenshots\_contact.png
+  → Submitting contact form...
+  ✓ Form submitted
+
+
+╔══════════════════════════════════════════════════╗
+║              TEST SUMMARY                        ║
+╠══════════════════════════════════════════════════╣
+║  ✗ FAIL  /home        Violations: N/A  ║
+║  ✗ FAIL  /login       Violations: N/A  ║
+║  ✓ PASS  /contact     Violations: 6    ║
+╠══════════════════════════════════════════════════╣
+║  Total Accessibility Violations: 6                ║
+╚══════════════════════════════════════════════════╝
