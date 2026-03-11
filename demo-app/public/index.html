@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<!-- A11Y ISSUE: missing lang attribute on <html> -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal - Powerful data tools for RevOps</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #ffffff;
+      color: #1a1a2e;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a2e;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #e8c547, #d4a843);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nav-logo-icon::after {
+      content: '◆';
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #1a1a2e; }
+
+    .nav-links .ai-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ai-link .sparkle {
+      font-size: 12px;
+      color: #7c5cfc;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-right a.signin {
+      text-decoration: none;
+      color: #555;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #2d2d4e; }
+
+    /* ─── HERO ─── */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 40px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #1a1a2e;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      /* A11Y ISSUE: low contrast text */
+      color: #c0c0c0;
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .hero .btn-demo {
+      display: inline-block;
+      background: #1a1a2e;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .hero .btn-demo:hover { background: #2d2d4e; }
+
+    /* ─── CENTER GRAPHIC ─── */
+    .center-graphic {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .chat-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      padding: 28px 32px;
+      max-width: 520px;
+      margin: 0 auto;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    }
+
+    .chat-prompt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .chat-prompt .sparkle-icon {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, #c084fc, #818cf8);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 14px;
+    }
+
+    .chat-prompt span {
+      font-size: 15px;
+      color: #444;
+    }
+
+    .chat-prompt span b { color: #1a1a2e; font-weight: 600; }
+
+    .contact-bubbles {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .contact-bubble {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f7f7f8;
+      border: 1px solid #e8e8e8;
+      border-radius: 24px;
+      padding: 8px 16px;
+    }
+
+    .avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600; color: #fff;
+    }
+
+    .avatar.green { background: #4ade80; }
+    .avatar.coral { background: #f87171; }
+    .avatar.amber { background: #fbbf24; }
+
+    .contact-bubble span { font-size: 14px; color: #333; }
+
+    /* ─── CONNECTION LINES (decorative) ─── */
+    .connections {
+      position: relative;
+      max-width: 1100px;
+      margin: -40px auto 0;
+      height: 200px;
+    }
+
+    .node {
+      position: absolute;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .node.salesforce { top: 20px; left: 8%; color: #00a1e0; }
+    .node.intercom { top: 60px; left: 18%; color: #1f8ded; }
+    .node.segment { top: 80px; left: 5%; color: #52bd95; }
+    .node.mixpanel { top: 40px; left: 25%; color: #7856ff; }
+    .node.snowflake { top: 100px; left: 22%; color: #29b5e8; }
+    .node.clearbit { top: 130px; left: 10%; color: #4a5568; }
+    .node.linkedin { top: 20px; right: 8%; color: #0a66c2; }
+    .node.hubspot { top: 80px; right: 10%; color: #ff7a59; }
+    .node.zapier { top: 130px; right: 6%; color: #ff4a00; }
+
+    .label-connect {
+      position: absolute;
+      top: 85px; left: 30%;
+      font-size: 13px; font-weight: 500; color: #888;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .label-sync {
+      position: absolute;
+      top: 85px; right: 15%;
+      font-size: 13px; font-weight: 500; color: #888;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .label-dot { width: 8px; height: 8px; border-radius: 50%; background: #d0d0d0; }
+
+    /* ─── FEATURES SECTION ─── */
+    .features {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .feature-card {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      padding: 32px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .feature-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+
+    .feature-icon.purple { background: #ede9fe; color: #7c3aed; }
+    .feature-icon.blue   { background: #dbeafe; color: #2563eb; }
+    .feature-icon.green  { background: #dcfce7; color: #16a34a; }
+
+    .feature-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1a1a2e;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #fafafa;
+      border-top: 1px solid #eee;
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer span { font-size: 14px; color: #888; }
+
+    footer .footer-links { display: flex; gap: 24px; }
+
+    footer .footer-links a {
+      text-decoration: none;
+      color: #888;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    footer .footer-links a:hover { color: #1a1a2e; }
+
+    /* ─── A11Y-ISSUE SECTION ─── */
+    .showcase-section {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .showcase-section h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .showcase-section p.low-contrast {
+      /* A11Y ISSUE: very low contrast */
+      color: #d0d0d0;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon"></div>
+      Signal
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Solution</a></li>
+      <li><a href="/" class="ai-link"><span class="sparkle">✦</span> Signal AI</a></li>
+      <li><a href="/contact">Pricing</a></li>
+      <li><a href="/contact">Careers</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/login" class="signin">Sign in</a>
+      <a href="/contact" class="btn-primary">Book a demo</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Powerful data<br>tools for RevOps</h1>
+    <p>Connect, Analyze, and Sync your data from any tool &ndash; All in one workspace.</p>
+    <a href="/contact" class="btn-demo">Book a demo</a>
+  </section>
+
+  <!-- CENTER CHAT CARD -->
+  <div class="center-graphic">
+    <div class="chat-card">
+      <div class="chat-prompt">
+        <div class="sparkle-icon">✦</div>
+        <span>Show me a <b>list of contacts</b> that <b>haven't signed in</b> in <b>the last 10 days</b></span>
+      </div>
+      <div class="contact-bubbles">
+        <div class="contact-bubble">
+          <div class="avatar green">C</div>
+          <span>Courtney H.</span>
+        </div>
+        <div class="contact-bubble">
+          <div class="avatar coral">S</div>
+          <span>Savannah N.</span>
+        </div>
+        <div class="contact-bubble">
+          <div class="avatar amber">F</div>
+          <span>Floyd M.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTION NODES (decorative icons) -->
+  <div class="connections">
+    <div class="node salesforce">☁</div>
+    <div class="node intercom">🎧</div>
+    <div class="node segment">◉</div>
+    <div class="node mixpanel">M</div>
+    <div class="node snowflake">❄</div>
+    <div class="node clearbit">◈</div>
+    <div class="node linkedin">in</div>
+    <div class="node hubspot">⚙</div>
+    <div class="node zapier">⚡</div>
+    <div class="label-connect"><span class="label-dot"></span> Connect</div>
+    <div class="label-sync"><span class="label-dot"></span> Sync</div>
+  </div>
+
+  <!-- A11Y ISSUE: image without alt text -->
+  <div class="showcase-section">
+    <h2>Trusted by Leading Teams</h2>
+    <img src="/img/partners-banner.png" width="600">
+    <p class="low-contrast">Over 2,000 RevOps teams rely on Signal every day.</p>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon purple">🔗</div>
+      <h3>Connect</h3>
+      <p>Bring all your data sources together in one unified workspace. No more switching between tools.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon blue">📊</div>
+      <h3>Analyze</h3>
+      <p>Run powerful queries with natural language. Get insights from your data in seconds, not hours.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon green">🔄</div>
+      <h3>Sync</h3>
+      <p>Keep your tools in perfect harmony. Bi-directional sync ensures data consistency everywhere.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2026 Signal. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/login">Sign in</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
